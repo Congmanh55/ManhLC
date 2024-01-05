@@ -1,7 +1,7 @@
 require("dotenv").config()
 import jwt from 'jsonwebtoken';
 
-const nonSecurePaths = ['/', '/login', '/register'];
+const nonSecurePaths = ['/', '/login', '/register' ];
 
 
 
@@ -60,7 +60,7 @@ const checkUserJWT = (req, res, next) => {
 }
 
 const checkUserPermission = (req, res, next) => {
-    if (nonSecurePaths.includes(req.path)) {
+    if (nonSecurePaths.includes(req.path) || req.path === '/account') {
         return next();
     }
     if(req.user) {

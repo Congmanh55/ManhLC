@@ -5,6 +5,7 @@ import {
     deleteUser,
     getUserWithPagination
 } from '../service/userApiService';
+
 const readFunc = async (req, res) => {
 
     try {
@@ -107,6 +108,19 @@ const deleteFunc = async (req, res) => {
 
 }
 
+const getUserAccount = async (req, res) => {
+    return res.status(200).json({
+        EM: 'ok',
+        EC: 0,
+        DT: {
+            access_token: req.token,
+            email: req.user.email,
+            groupWithRoles: req.user.groupWithRoles,
+            username: req.user.username
+        }
+    })
+}
+
 module.exports = {
-    readFunc, createFunc, updateFunc, deleteFunc
+    readFunc, createFunc, updateFunc, deleteFunc, getUserAccount
 }

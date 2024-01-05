@@ -1,13 +1,14 @@
 import express from "express"
 import { testApi, 
         handleRegister, 
-        handleLogin 
+        handleLogin, 
 } from '../controllers/apiController';
 import {
     readFunc,
     createFunc,
     updateFunc,
-    deleteFunc
+    deleteFunc,
+    getUserAccount
 } from "../controllers/userController";
 
 import {
@@ -25,6 +26,7 @@ const initApiRoutes = (app) => {
     router.get('/test-api', testApi);
     router.post('/register', handleRegister);
     router.post('/login', handleLogin);
+    router.get('/account', getUserAccount)
 
     //R
     router.get('/user/read', readFunc)
